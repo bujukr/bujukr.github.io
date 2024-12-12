@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>...</title>
+        <style>
+        /* 전체 화면 크기 설정 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        /* 날짜를 표시하는 박스 */
+        .date-box {
+            text-align: center;
+            padding: 20px;
+            background-color: #008080;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 날짜 글꼴 크기 및 스타일 */
+        .date-text {
+            font-size: 80px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* 작은 텍스트 (오늘 날짜 아래) */
+        .note-text {
+            font-size: 30px;
+            margin-top: 10px;
+            color: #dcdcdc;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="date-box">
+        <div id="date" class="date-text"></div>
+        <div class="note-text">오늘 날짜입니다.</div>
+    </div>
+
+    <script>
+        // 날짜를 포맷팅하는 함수
+        function formatDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
+            const day = String(today.getDate()).padStart(2, '0');
+
+            return `${year}-${month}-${day}`;
+        }
+
+        // 날짜를 업데이트하는 함수
+        function updateDate() {
+            const dateElement = document.getElementById("date");
+            dateElement.textContent = formatDate();
+        }
+
+        // 페이지 로드 후 날짜 자동 갱신
+        setInterval(updateDate, 1000); // 1초마다 갱신
+        updateDate(); // 페이지 로드 시 바로 표시
+    </script>
+  </body>
+</html>  
