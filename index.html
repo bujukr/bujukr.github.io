@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘 날짜</title>
+    <title>날짜와 시간</title>
     <!-- 구글 웹폰트 Noto Sans KR 로드 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -19,15 +19,15 @@
             font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 폰트 사용 */
         }
         
-        /* 날짜를 표시하는 박스 */
-        .date-box {
+        /* 날짜 및 시간을 표시하는 박스 */
+        .datetime-box {
             text-align: center;
             padding: 30px;
             background-color: #c35; /* 핑크색 */
             color: white;
             border-radius: 15px;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-            width: 60%; /* 박스 크기 */
+            width: 100%; /* 박스 크기 */
             max-width: 800px;
         }
 
@@ -38,12 +38,11 @@
             letter-spacing: 3px;
         }
 
-        /* 작은 텍스트 (오늘 날짜 아래) */
-        .note-text {
-            font-size: 35px;
-            margin-top: 20px;
-            color: #f5f5f5;
-            font-weight: 400;
+        /* 시간 글꼴 크기 및 스타일 (작은 크기) */
+        .time-text {
+            font-size: 40px;
+            margin-top: 10px;
+            font-weight: 400; /* 기본 글씨 두께 */
         }
 
         /* 반응형 디자인 */
@@ -51,41 +50,68 @@
             .date-text {
                 font-size: 70px;
             }
-            .note-text {
-                font-size: 25px;
+            .time-text {
+                font-size: 30px;
             }
-            .date-box {
+            .desc-text {
+                font-size: 30px;
+            }
+            .datetime-box {
                 width: 80%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="date-box">
+    <div class="datetime-box">
+        <div id="desc" class="desc-text">오늘 날짜입니다.</div>
         <div id="date" class="date-text"></div>
-        <div class="note-text">오늘 날짜입니다.</div>
+        <div id="time" class="time-text"></div>
     </div>
 
     <script>
-        // 날짜를 포맷팅하는 함수
+        // 날짜를 포맷팅하는 함수 (YYYY-MM-DD 형식)
         function formatDate() {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 1을 더함
-            const day = String(today.getDate()).padStart(2, '0');
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
 
-            return `${year}-${month}-${day}`;
+            // 2자리 숫자로 표시 (예: 2024-12-12)
+            month = month < 10 ? '0' + month : month;
+            day = day < 10 ? '0' + day : day;
+
+            return year + '-' + month + '-' + day;
         }
 
-        // 날짜를 업데이트하는 함수
-        function updateDate() {
-            const dateElement = document.getElementById("date");
+        // 시간을 포맷팅하는 함수 (HH:MM:SS 형식)
+        function formatTime() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // 2자리 숫자로 표시 (예: 09:03:05)
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            return hours + ':' + minutes + ':' + seconds;
+        }
+
+        // 날짜와 시간을 업데이트하는 함수
+        function updateDateTime() {
+            var dateElement = document.getElementById("date");
+            var timeElement = document.getElementById("time");
+            
+            // 날짜와 시간 업데이트
             dateElement.textContent = formatDate();
+            timeElement.textContent = formatTime();
         }
 
-        // 페이지 로드 후 날짜 자동 갱신
-        setInterval(updateDate, 1000); // 1초마다 갱신
-        updateDate(); // 페이지 로드 시 바로 표시
+        // 페이지 로드 후 날짜 및 시간 자동 갱신
+        setInterval(updateDateTime, 1000); // 1초마다 갱신
+        updateDateTime(); // 페이지 로드 시 바로 표시
     </script>
 </body>
 </html>
