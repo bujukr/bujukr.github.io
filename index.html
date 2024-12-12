@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOW</title>
+    <title>날짜와 시간</title>
     <style>
         @font-face {
-         font-family: 'Noto Sans KR';
-         font-style: normal;
-         font-weight: 400;
-         font-display: swap;
-         src: url('NotoSansKR-Regular.ttf') format('woff2');
+            font-family: 'Noto Sans KR';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('NotoSansKR-Regular.ttf') format('woff2');
         }
-    </style>
-    <style>
+
         /* 전체 화면 크기 설정 */
         body {
             margin: 0;
@@ -22,20 +21,25 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f8ff;
-            font-family: 'Noto Sans KR', sans-serif; /* Noto Sans KR 폰트 사용 */
+            background-image: url('https://example.com/christmas-background.jpg'); /* Christmas background image */
+            background-size: cover;
+            background-attachment: fixed; /* Keep the background fixed */
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden; /* Prevent scrolling */
         }
-        
+
         /* 날짜 및 시간을 표시하는 박스 */
         .datetime-box {
             text-align: center;
             padding: 30px;
-            background-color: #c35; /* 핑크색 */
+            background-color: rgba(255, 0, 0, 0.7); /* Christmas red with transparency */
             color: white;
             border-radius: 15px;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
             width: 100%; /* 박스 크기 */
             max-width: 800px;
+            position: relative;
+            z-index: 10; /* Keep box above background */
         }
 
         /* 날짜 글꼴 크기 및 스타일 */
@@ -52,6 +56,11 @@
             font-weight: 400; /* 기본 글씨 두께 */
         }
 
+        .desc-text {
+            font-size: 30px;
+            font-style: italic;
+        }
+
         /* 반응형 디자인 */
         @media (max-width: 768px) {
             .date-text {
@@ -61,7 +70,7 @@
                 font-size: 30px;
             }
             .desc-text {
-                font-size: 30px;
+                font-size: 20px;
             }
             .datetime-box {
                 width: 80%;
