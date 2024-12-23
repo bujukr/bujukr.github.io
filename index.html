@@ -1,1 +1,95 @@
-<!doctypehtml><html lang=ko><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>NOW</title><style>@font-face{font-family:'Noto Sans KR';font-style:normal;font-weight:400;font-display:swap;src:url(NotoSansKR-Regular.ttf) format('woff2')}body{margin:0;padding:0;display:flex;justify-content:center;align-items:center;height:100vh;background-size:cover;background-attachment:fixed;font-family:'Noto Sans KR',sans-serif;overflow:hidden}.datetime-box{text-align:center;padding:30px;background-color:rgba(255,0,0,.7);color:#fff;border-radius:15px;box-shadow:0 0 40px rgba(0,0,0,.2);width:100%;max-width:800px;position:relative;z-index:10}.date-text{font-size:100px;font-weight:700;letter-spacing:3px}.time-text{font-size:40px;margin-top:10px;font-weight:400}.desc-text{font-size:30px;font-style:italic}@media (max-width:768px){.date-text{font-size:70px}.time-text{font-size:30px}.desc-text{font-size:20px}.datetime-box{width:100%}}</style><div class=datetime-box><div class=desc-text id=desc>오늘 날짜입니다.</div><div class=date-text id=date></div><div class=time-text id=time></div></div><script>function formatDate(){var e=new Date,t=e.getFullYear(),n=e.getMonth()+1,a=e.getDate();return t+"-"+(n=n<10?"0"+n:n)+"-"+(a=a<10?"0"+a:a)}function formatTime(){var e=new Date,t=e.getHours(),n=e.getMinutes(),a=e.getSeconds();return(t=t<10?"0"+t:t)+":"+(n=n<10?"0"+n:n)+":"+(a=a<10?"0"+a:a)}function updateDateTime(){var e=document.getElementById("date"),t=document.getElementById("time");e.textContent=formatDate(),t.textContent=formatTime()}setInterval(updateDateTime,1e3),updateDateTime()</script>
+<!DOCTYPE html>
+<html lang="ko">
+    <meta charset="UTF-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>NOW</title>
+    <style>
+        @font-face {
+            font-family: "Noto Sans KR";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(NotoSansKR-Regular.ttf) format("woff2");
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Noto Sans KR", sans-serif;
+            overflow: hidden;
+        }
+        .datetime-box {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 0, 0, 0.7);
+            color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            z-index: 10;
+        }
+        .date-text {
+            font-size: 100px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+        .time-text {
+            font-size: 40px;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+        .desc-text {
+            font-size: 30px;
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .date-text {
+                font-size: 70px;
+            }
+            .time-text {
+                font-size: 30px;
+            }
+            .desc-text {
+                font-size: 20px;
+            }
+            .datetime-box {
+                width: 100%;
+            }
+        }
+    </style>
+    <div class="datetime-box">
+        <div class="desc-text" id="desc">오늘 날짜입니다.</div>
+        <div class="date-text" id="date"></div>
+        <div class="time-text" id="time"></div>
+    </div>
+    <script>
+        function formatDate() {
+            var e = new Date(),
+                t = e.getFullYear(),
+                n = e.getMonth() + 1,
+                a = e.getDate();
+            return (n = n < 10 ? "0" + n : n) + "-" + (a = a < 10 ? "0" + a : a);
+            //return t + "-" + (n = n < 10 ? "0" + n : n) + "-" + (a = a < 10 ? "0" + a : a);
+        }
+        function formatTime() {
+            var e = new Date(),
+                t = e.getHours(),
+                n = e.getMinutes(),
+                a = e.getSeconds();
+            return (t = t < 10 ? "0" + t : t) + ":" + (n = n < 10 ? "0" + n : n) + ":" + (a = a < 10 ? "0" + a : a);
+        }
+        function updateDateTime() {
+            var e = document.getElementById("date"),
+                t = document.getElementById("time");
+            (e.textContent = formatDate()), (t.textContent = formatTime());
+        }
+        setInterval(updateDateTime, 1e3), updateDateTime();
+    </script>
+</html>
