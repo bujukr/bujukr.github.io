@@ -34,6 +34,7 @@
             max-width: 800px;
             position: relative;
             z-index: 10;
+            height: 300px; //c
         }
         .date-text {
             font-size: 100px;
@@ -75,7 +76,7 @@
                 t = e.getFullYear(),
                 n = e.getMonth() + 1,
                 a = e.getDate();
-            return (n = n < 10 ? "0" + n : n) + "-" + (a = a < 10 ? "0" + a : a);
+            return (n = n < 10 ? "0" + n : n) + "월 " + (a = a < 10 ? "0" + a : a) + "일";
             //return t + "-" + (n = n < 10 ? "0" + n : n) + "-" + (a = a < 10 ? "0" + a : a);
         }
         function formatTime() {
