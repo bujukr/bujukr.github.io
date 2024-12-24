@@ -37,7 +37,7 @@
             height: 400px; //c
         }
         .date-text {
-            font-size: 110px;
+            font-size: 80px;
             font-weight: 700;
             letter-spacing: 3px;
         }
@@ -68,7 +68,7 @@
     <div class="datetime-box">
         <div class="desc-text" id="desc">오늘 날짜입니다.</div>
         <div class="date-text" id="date"></div>
-        <div class="time-text" id="time"></div>
+        <!--<div class="time-text" id="time"></div>-->
         <div class="desc-text" id="desc2">폐기물 스티커 접수증 -></div>
     </div>
     <script>
@@ -102,6 +102,6 @@
                 t = document.getElementById("time");
             (e.textContent = formatDate()), (t.textContent = formatTime());
         }
-        setInterval(updateDateTime, 1e3), updateDateTime();
+        //setInterval(updateDateTime, 1e3), updateDateTime();
     </script>
 </html>
