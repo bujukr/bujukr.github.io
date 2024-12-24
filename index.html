@@ -72,14 +72,24 @@
         <div class="desc-text" id="desc2">폐기물 스티커 접수증 -></div>
     </div>
     <script>
-        function formatDate() {
-            var e = new Date(),
-                t = e.getFullYear(),
-                n = e.getMonth() + 1,
-                a = e.getDate();
-            return (n = n < 10 ? "0" + n : n) + "월 " + (a = a < 10 ? "0" + a : a) + "일";
-            //return t + "-" + (n = n < 10 ? "0" + n : n) + "-" + (a = a < 10 ? "0" + a : a);
-        }
+    function formatDate() {
+    var e = new Date(),
+        t = e.getFullYear(),
+        n = e.getMonth() + 1,
+        a = e.getDate(),
+        weekday = e.getDay(); // 요일을 숫자로 반환 (0:일요일, 1:월요일, ...)
+
+    // 요일 배열 (0:일요일, 1:월요일, 2:화요일, ...)
+    var weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+
+    // 날짜 형식 (월, 일 앞에 0 추가)
+    n = n < 10 ? "0" + n : n;
+    a = a < 10 ? "0" + a : a;
+
+    // 반환값에 요일 추가
+    return n + "월 " + a + "일 (" + weekdays[weekday] + ")";
+}
+
         function formatTime() {
             var e = new Date(),
                 t = e.getHours(),
